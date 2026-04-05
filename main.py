@@ -22,9 +22,11 @@ def unpack(filepath: str):
         print(f"File {filepath} cannot access!")
     else:
         process_splashimg(filepath, "pic/splash.png")
+
+
 def repack(nolimit=False):
     print("Using predefined DataSize to generate splash...")
-    n=1
+    n = 1
     output_dir = 'output'
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -38,7 +40,7 @@ def repack(nolimit=False):
         print(f"Compress ./pic/splash{n}.png padding into {output_dir}/splash.img...")
         data = GenerateLogoImg(f"./pic/splash{n}.png", i)
         a = len(data)
-        b = a+512
+        b = a + 512
         print(f"Data size: {a}\nPredefined:{i}")
         if i != 0:
             if a > b:
@@ -47,8 +49,10 @@ def repack(nolimit=False):
                 return
         with open(f"{output_dir}/splash.img", "ab") as f:
             f.write(data)
-        n+=1
+        n += 1
     print("Done...")
+
+
 def main():
     choice = input(menu_text)
     if choice == '1':
